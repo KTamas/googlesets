@@ -1,28 +1,32 @@
-var _ = require("underscore");
 var http = require("http");
-var sets_path = 'http://labs.google.com/sets?hl=en&btn=Large+Set&';
 
-function sets(items) {
-  // q1=lofasz&q2=faszlo etc
-  var c = 0; //tudom hogy undorito
-  var qitems =  _.map(items, function(i) {
+var sets = function (items, callback) {
+  // query string: q1=apples&q2=oranges&q3=grapes etc
+  var c = 0;
+  var query_string = items.map(function(i) {
     c += 1;
     return "q" + c + "=" + i;
-  });
+  }).join('&');
   var options = { host: "labs.google.com"
                 , port: 80
-                , path: '/sets?hl=en&btn=Large+set&' + qitems.join('&')
+                , path: '/sets?hl=en&btn=Large+set&' + query_string 
                 }  
-  var response = ""
-  var to_return;
-  http.get(options, function(res) {
+  http.get(options, function (res) {
+    var body = "";
     res.on('data', function(chunk) {
-      response += chunk;
+      body += chunk;
     });
     res.on('end', function() {
-      console.log(response.scan(/q=[^">]/))
+      var re = /<a href="http:\/\/www\.google\.com\/search\?hl=en&amp;q=[^"]+">(.*?)<\/a>/g;
+      var urlmatches = body.match(re);
+      var matches = urlmatches.map(function (i) {
+        var re2 = /<a href="http:\/\/www\.google\.com\/search\?hl=en&amp;q=[^"]+">(.*?)<\/a>/g; //nem mondok semmit
+        var vegre = re2.exec(i)[1];
+        return vegre;
+      });
+      callback(matches);
     });
   });
 } 
 
-sets(['a', 'b', 'c']);
+sets(['a', 'b', 'c'], function(i) { console.log(i); });
