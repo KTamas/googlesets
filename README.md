@@ -3,7 +3,7 @@ sets.js
 
 Dead simple API for Google Sets.
 
-Installing (NPM package work in progress):
+Installing:
 
     npm install sets.js
 
