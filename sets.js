@@ -3,7 +3,9 @@ var http = require("http");
 // var regexp = /<a href="http:\/\/www\.google\.com\/search\?hl=en&amp;q=[^"]+">(.*?)<\/a>/g;
 var regexp = '<a href="http:\\/\\/www\\.google\\.com\\/search\\?hl=en&amp;q=[^"]+">(.*?)<\\/a>';
 
-exports.googlesets = function (items, callback) {
+var sets = exports;
+
+sets.googlesets = function (items, callback) {
   // query string: q1=apples&q2=oranges&q3=grapes etc
   var query_string = items.map(function(item, c) {
     return "q" + (c+1) + "=" + item;
