@@ -26,5 +26,3 @@ exports.googlesets = function (items, callback) {
     });
   });
 }; 
-
-//exports.googlesets(['apples', 'grapes', 'oranges'], function(i) { console.log(i); });
