@@ -3,7 +3,7 @@ sets.js
 
 Dead simple API for Google Sets.
 
-Also used to learn a lot about coding async and getting the gist of the node/npm boilerplate stuff.
+Also used to learn a lot about coding async and getting the gist of the node/npm boilerplate stuff. Not to mention learning the ins and outs of javascript's, slightly odd RegExp handling.
 
 Installing:
 
