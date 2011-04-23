@@ -1,7 +1,7 @@
 { "name" : "sets.js"
 , "description" : "A dead simple API for Google Sets"
 , "keywords" : ["google", "sets", "sets.js"]
-, "version" : "0.1"
+, "version" : "0.0.1"
 , "preferGlobal" : false
 , "homepage" : "https://github.com/ktamas/sets.js"
 , "author" : "Tamas Kadar <ktamas@ktamas.com> (http://blog.ktamas.com)"
