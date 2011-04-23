@@ -11,7 +11,7 @@ var sets = function (items, callback) {
   var query = { host: "labs.google.com"
               , port: 80
               , path: '/sets?hl=en&btn=Large+set&' + query_string 
-              }  
+              }; 
   http.get(query, function (res) {
     var body = "";
     res.on('data', function(chunk) {
@@ -25,6 +25,6 @@ var sets = function (items, callback) {
       callback(matches);
     });
   });
-} 
+}; 
 
 sets(['apples', 'grapes', 'oranges'], function(i) { console.log(i); });
