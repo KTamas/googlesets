@@ -1,32 +1,30 @@
 var http = require("http");
+// I really, really, really hate regexp handling in javascript.
+// var regexp = /<a href="http:\/\/www\.google\.com\/search\?hl=en&amp;q=[^"]+">(.*?)<\/a>/g;
+var regexp = '<a href="http:\\/\\/www\\.google\\.com\\/search\\?hl=en&amp;q=[^"]+">(.*?)<\\/a>';
 
 var sets = function (items, callback) {
   // query string: q1=apples&q2=oranges&q3=grapes etc
-  var c = 0;
-  var query_string = items.map(function(i) {
-    c += 1;
-    return "q" + c + "=" + i;
+  var query_string = items.map(function(item, c) {
+    return "q" + (c+1) + "=" + item;
   }).join('&');
-  var options = { host: "labs.google.com"
-                , port: 80
-                , path: '/sets?hl=en&btn=Large+set&' + query_string 
-                }  
-  http.get(options, function (res) {
+  var query = { host: "labs.google.com"
+              , port: 80
+              , path: '/sets?hl=en&btn=Large+set&' + query_string 
+              }  
+  http.get(query, function (res) {
     var body = "";
     res.on('data', function(chunk) {
       body += chunk;
     });
     res.on('end', function() {
-      var re = /<a href="http:\/\/www\.google\.com\/search\?hl=en&amp;q=[^"]+">(.*?)<\/a>/g;
-      var urlmatches = body.match(re);
-      var matches = urlmatches.map(function (i) {
-        var re2 = /<a href="http:\/\/www\.google\.com\/search\?hl=en&amp;q=[^"]+">(.*?)<\/a>/g; //nem mondok semmit
-        var vegre = re2.exec(i)[1];
-        return vegre;
+      var urlmatches = body.match(new RegExp(regexp, 'g'));
+      var matches = urlmatches.map(function (item) {
+        return new RegExp(regexp, 'g').exec(item)[1];
       });
       callback(matches);
     });
   });
 } 
 
-sets(['a', 'b', 'c'], function(i) { console.log(i); });
+sets(['apples', 'grapes', 'oranges'], function(i) { console.log(i); });
