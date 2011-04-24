@@ -1,9 +1,19 @@
-var googlesets = require("./googlesets");
+var googlesets = require("./googlesets.js");
 
-googlesets.small(['carrots', 'tomatoes', 'cabbages'], function(item) {
+// will work
+googlesets.small(['carrots', 'tomatoes', 'cabbages'], function(err, item) {
+  if (err) {
+    console.log(err.message);
+    return;
+  }
   console.log(item);
 });
 
-googlesets.large(['apples', 'oranges', 'grapes', 'pears'], function(item) {
+// will throw an error and say 'No sets found.'
+googlesets.large(["ház","doboz","disznó"], function(err, item) {
+  if (err) {
+    console.log(err.message);
+    return;
+  } 
   console.log(item);
 });
