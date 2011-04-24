@@ -21,6 +21,9 @@ var get = function (items, what, callback) {
     });
     res.on('end', function() {
       var urlmatches = body.match(new RegExp(regexp, 'g'));
+      if (urlmatches === null) {
+        throw new Error("No sets found.");
+      }
       var matches = urlmatches.map(function (item) {
         return new RegExp(regexp, 'g').exec(item)[1];
       });
@@ -31,8 +34,8 @@ var get = function (items, what, callback) {
 
 googlesets.large = function(items, callback) {
   return get(items, 'Large+set', callback);
-}
+};
 
 googlesets.small = function(items, callback) {
   return get(items, 'Small+set', callback);
-}
+};
