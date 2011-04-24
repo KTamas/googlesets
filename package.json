@@ -1,19 +1,19 @@
-{ "name" : "sets"
+{ "name" : "googlesets"
 , "description" : "A dead simple API for Google Sets"
-, "keywords" : ["google", "sets"]
+, "keywords" : ["google", "sets", "googlesets"]
 , "version" : "0.0.1"
 , "preferGlobal" : false
-, "homepage" : "https://github.com/ktamas/sets.js"
+, "homepage" : "https://github.com/ktamas/googlesets"
 , "author" : "Tamas Kadar <ktamas@ktamas.com> (http://blog.ktamas.com)"
 , "contributors" : [ "Gaspar Kortesi <gazs@bergengocia.net> (http://bergengocia.net)" ]
 , "repository" :
   { "type" : "git"
-  , "url" : "git://github.com/KTamas/sets.js.git"
+  , "url" : "git://github.com/KTamas/googlesets.git"
   }
 , "bugs" :
   { "mail" : "ktamas@ktamas.com"
-  , "web" : "https://github.com/ktamas/sets.js/issues"
+  , "web" : "https://github.com/ktamas/googlesets/issues"
   }
 , "files" : [""]
-, "main" : "sets"
+, "main" : "googlesets"
 }
