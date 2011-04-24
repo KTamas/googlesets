@@ -22,12 +22,12 @@ var get = function (items, what, callback) {
     res.on('end', function() {
       var urlmatches = body.match(new RegExp(regexp, 'g'));
       if (urlmatches === null) {
-        callback(new Error("No sets found."));
+        callback(new Error("No sets found."), null);
       } else {
         var matches = urlmatches.map(function (item) {
           return new RegExp(regexp, 'g').exec(item)[1];
         });
-        callback(matches);
+        callback(null, matches);
       }
     });
   });
