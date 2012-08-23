@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/KTamas/googlesets.png)](http://travis-ci.org/KTamas/googlesets)
 googlesets
 ==========
 
